@@ -82,9 +82,13 @@ public class TwitterSpout implements IBatchSpout {
   public void emitBatch(long batchId, TridentCollector collector) {
     final Status status = queue.poll();
     if (status == null) {
-      Utils.sleep(50);
+      Utils.sleep(10);
     } else {
-      collector.emit(new Values(status));
+      if (status.getLang() == 'EN') {
+        collector.emit(new Values(status));
+      } else {
+        System.out.println(status.getLang());
+      }
     }
   }
 
