@@ -15,10 +15,11 @@ public class PrintResults extends BaseFilter {
     @Override
     public boolean isKeep(TridentTuple tuple) {
 		if (count == 0) {
+			System.out.println();
 			java.util.Date date= new java.util.Date();
 			System.out.print(new Timestamp(date.getTime()));
 		} else if (count < 10) {
-			System.out.printl( " " + tuple.toString());
+			System.out.print( " " + tuple.toString());
 			count++;
 		} else if (count == 10) {
 			//reset count
