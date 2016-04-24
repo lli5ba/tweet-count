@@ -16,7 +16,7 @@ public class HashtagExtractor extends BaseFunction {
   public void execute(TridentTuple tuple, TridentCollector collector) {
     //Get the tweet
     final Status status = (Status) tuple.get(0);
-    sentence = status.getText();
+    String sentence = status.getText();
     //NOTE: The following code is from the Microsoft wordcount tutorial:
     //https://azure.microsoft.com/en-us/documentation/articles/hdinsight-storm-develop-java-topology/
     //An iterator to get each word
