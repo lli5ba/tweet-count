@@ -72,7 +72,7 @@ public class TwitterSpout implements IBatchSpout {
     //to find trends for
     final FilterQuery query = new FilterQuery();
     //topics
-    query.track(new String[]{"love", "coffee", "music"});
+    query.track(new String[]{"#gameofthrones"});
     //Apply the filter
     twitterStream.filter(query);
   }
