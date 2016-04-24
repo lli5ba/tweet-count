@@ -84,7 +84,7 @@ public class TwitterSpout implements IBatchSpout {
     if (status == null) {
       Utils.sleep(10);
     } else {
-      if (status.getLang() == 'EN') {
+      if (status.getLang().equals("EN")) {
         collector.emit(new Values(status));
       } else {
         System.out.println(status.getLang());
