@@ -34,7 +34,7 @@ public class TwitterTrendingTopology {
     .persistentAggregate(new MemoryMapState.Factory(), new Count(), new Fields("count"))
     .newValuesStream()
     .applyAssembly(new FirstN(10, "count"))
-    .each(new Fields("hashtag", "count"), new Debug());
+    .each(new Fields("hashtag", "count"), new PrintResults());
     //Build and return the topology
     return topology.build();
   }
