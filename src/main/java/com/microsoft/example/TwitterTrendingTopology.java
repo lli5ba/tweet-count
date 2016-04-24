@@ -16,6 +16,7 @@ import java.io.IOException;
 
 import com.microsoft.example.HashtagExtractor;
 import com.microsoft.example.TwitterSpout;
+import com.microsoft.example.PrintResults;
 
 public class TwitterTrendingTopology {
   //Build the topology
