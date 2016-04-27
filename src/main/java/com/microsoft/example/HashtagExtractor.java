@@ -56,10 +56,12 @@ public class HashtagExtractor extends BaseFunction {
 	try {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(filename), "UTF-8"));
 		String line;
-
+		
 		while ((line = reader.readLine()) != null) {
-			if (!line.isEmpty())
+			if (!line.isEmpty()){
+				System.out.println(line);
 				words.add(line);
+			}
 		}
 		reader.close();
 		
