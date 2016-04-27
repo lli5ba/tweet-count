@@ -63,7 +63,7 @@ public void updateDate(){
 	
 }
 
-public static ArrayList<String> topNKeys(final HashMap<String, Integer> map, int n) {
+public static List<String> topNKeys(final HashMap<String, Integer> map, int n) {
     PriorityQueue<String> topN = new PriorityQueue<String>(n, new Comparator<String>() {
         public int compare(String s1, String s2) {
             return Integer.compare(map.get(s1), map.get(s2));
@@ -78,11 +78,11 @@ public static ArrayList<String> topNKeys(final HashMap<String, Integer> map, int
             topN.add(key);
         }
     }
-    return (ArrayList) Arrays.asList(topN.toArray());
+    return (List) Arrays.asList(topN.toArray());
 }
 public void printTopTen() {
 	//print top 10 words (words with highest counts)
-	ArrayList<String> top10 = topNKeys(counts, 10);
+	List<String> top10 = topNKeys(counts, 10);
 	System.out.println(top10.toString());
 
 }
