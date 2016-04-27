@@ -29,9 +29,10 @@ public class WordCount extends BaseFunction {
       collector.emit(new Values(word, count));
     
 	//Declare that we will emit a tuple containing two fields; word and count
+} 
     @Override
     public void declareOutputFields(OutputFieldsDeclarer declarer) {
       declarer.declare(new Fields("hashtag", "count"));
     }
-  }
+  
 }
