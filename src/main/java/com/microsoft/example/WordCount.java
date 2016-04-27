@@ -44,7 +44,7 @@ public class WordCount extends BaseFunction {
 public void updateDate(){
 	date2 = new java.util.Date();
 	double seconds = (date2.getTime()-date.getTime())/1000;
-	System.out.println(seconds)
+	System.out.println(seconds);
 	if (seconds >= 5) {
 		System.out.println(new Timestamp(date2.getTime()));
 		this.date = date2;
