@@ -29,7 +29,7 @@ import java.util.Date;
 public class WordCount extends BaseFunction {
 
 	//For holding words and counts
-    Map<String, Integer> counts = new HashMap<String, Integer>();
+    HashMap<String, Integer> counts = new HashMap<String, Integer>();
     //For holding last date
     Date date = new java.util.Date();
     //to sort TreeMap
