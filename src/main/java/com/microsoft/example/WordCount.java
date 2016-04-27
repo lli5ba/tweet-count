@@ -26,7 +26,7 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 public class WordCount extends BaseFunction {
-
+	
 	//For holding words and counts
     HashMap<String, Integer> counts = new HashMap<String, Integer>();
     //For holding last date
@@ -62,7 +62,7 @@ public void updateDate(){
 	}
 	
 }
-
+// From: http://stackoverflow.com/questions/18971849/best-way-to-get-top-n-keyssorted-by-values-in-a-hashmap
 public static List<String> topNKeys(final HashMap<String, Integer> map, int n) {
     PriorityQueue<String> topN = new PriorityQueue<String>(n, new Comparator<String>() {
         public int compare(String s1, String s2) {
