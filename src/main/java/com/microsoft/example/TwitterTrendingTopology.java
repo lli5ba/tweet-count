@@ -29,13 +29,18 @@ public class TwitterTrendingTopology {
     //4. a count of each hashtag is created
     //5. each hashtag, and how many times it has occured
     //   is emitted.
+    // topology.newStream("spout", spout)
+    // .each(new Fields("tweet"), new HashtagExtractor(), new Fields("hashtag"))
+    // .groupBy(new Fields("hashtag"))
+    // .persistentAggregate(new MemoryMapState.Factory(), new Count(), new Fields("count"))
+    // .newValuesStream()
+    // .applyAssembly(new FirstN(10, "count"))
+    // .each(new Fields("hashtag", "count"), new PrintResults());
+    
     topology.newStream("spout", spout)
     .each(new Fields("tweet"), new HashtagExtractor(), new Fields("hashtag"))
     .groupBy(new Fields("hashtag"))
-    .persistentAggregate(new MemoryMapState.Factory(), new Count(), new Fields("count"))
-    .newValuesStream()
-    .applyAssembly(new FirstN(10, "count"))
-    .each(new Fields("hashtag", "count"), new PrintResults());
+    .each(new Fields("hashtag"), new WordCount(),new Fields("count"));
     //Build and return the topology
     return topology.build();
   }
