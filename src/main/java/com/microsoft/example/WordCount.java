@@ -13,7 +13,6 @@ import java.util.Map.Entry;
 import java.util.Collections;
 import java.util.PriorityQueue;
 import java.util.Comparator;
-import java.util.ValueComparator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -32,8 +31,6 @@ public class WordCount extends BaseFunction {
     HashMap<String, Integer> counts = new HashMap<String, Integer>();
     //For holding last date
     Date date = new java.util.Date();
-    //to sort TreeMap
-    ValueComparator bvc =  new ValueComparator(counts);
   @Override
   public void execute(TridentTuple tuple, TridentCollector collector) {
     //Get the word contents from the tuple
