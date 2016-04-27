@@ -35,7 +35,7 @@ public class WordCount extends BaseFunction {
       //Increment the count and store it
       count++;
       counts.put(word, count);
-      updateDate;
+      this.updateDate();
       
       
       //Emit the word and the current count
