@@ -9,10 +9,13 @@ import backtype.storm.tuple.Values;
 import backtype.storm.tuple.Fields;
 import backtype.storm.topology.OutputFieldsDeclarer;
 
+import java.util.Map.Entry;
+import java.util.Collections;
+import java.util.PriorityQueue;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.TreeMap;
+import java.util.List;
 
 import twitter4j.HashtagEntity;
 import twitter4j.Status;
@@ -60,36 +63,29 @@ public void updateDate(){
 	
 }
 
+public static ArrayList<String> topNKeys(final HashMap<String, Integer> map, int n) {
+    PriorityQueue<String> topN = new PriorityQueue<String>(n, new Comparator<String>() {
+        public int compare(String s1, String s2) {
+            return Integer.compare(map.get(s1), map.get(s2));
+        }
+    });
+
+    for(String key:map.keySet()){
+        if (topN.size() < n)
+            topN.add(key);
+        else if (map.get(topN.peek()) < map.get(key)) {
+            topN.poll();
+            topN.add(key);
+        }
+    }
+    return (ArrayList) Arrays.asList(topN.toArray());
+}
 public void printTopTen() {
 	//print top 10 words (words with highest counts)
-	TreeMap<String, Integer> sorted_counts = new TreeMap<String,Integer>(bvc);
-	System.out.println(sorted_counts.toString());
-	// sorted_counts.putAll(counts);
-	// int i = 0;
-	// for (String s : sorted_counts.keySet()) {
-	// 	if (i == 10) {
-	// 		break;
-	// 	}
-	// 	System.out.println(s + " ");
-	// 	i++;
-	// }
-	// System.out.println();
+	ArrayList<String> top10 = topNKeys(counts, 10);
+	System.out.println(top10.toString());
+
 }
 }
 
-class ValueComparator implements Comparator<String> {
 
-    Map<String, Integer> base;
-    public ValueComparator(Map<String, Integer> base) {
-        this.base = base;
-    }
-
-    // Note: this comparator imposes orderings that are inconsistent with equals.    
-    public int compare(String a, String b) {
-        if (base.get(a) >= base.get(b)) {
-            return -1;
-        } else {
-            return 1;
-        } // returning 0 would merge keys
-    }
-}
