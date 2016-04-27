@@ -50,22 +50,24 @@ public class HashtagExtractor extends BaseFunction {
     
   }
   
-  	public ArrayList<String> loadStopwords(String filename) {
-  	  ArrayList<String> words = new ArrayList<String>();
-		try {
-			BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(filename), "UTF-8"));
-			String line;
+  public ArrayList<String> loadStopwords(String filename) {
+  	System.out.println("starting load");
+    ArrayList<String> words = new ArrayList<String>();
+	try {
+		BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(filename), "UTF-8"));
+		String line;
 
-			while ((line = reader.readLine()) != null) {
-				if (!line.isEmpty())
-					words.add(line);
-			}
-			reader.close();
-			
-		} catch(IOException e){
-			System.err.format("[Error]Failed to open file %s!!", filename);
+		while ((line = reader.readLine()) != null) {
+			if (!line.isEmpty())
+				words.add(line);
 		}
-		return words;
+		reader.close();
+		
+	} catch(IOException e){
+		System.out.println("not found");
+		System.err.format("[Error]Failed to open file %s!!", filename);
 	}
+	return words;
+}
 	
 }
