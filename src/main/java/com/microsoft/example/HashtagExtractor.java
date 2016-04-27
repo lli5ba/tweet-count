@@ -21,7 +21,7 @@ import twitter4j.HashtagEntity;
 import twitter4j.Status;
 
 public class HashtagExtractor extends BaseFunction {
-  ArrayList<String> stopwords = loadStopwords("stopwords.txt");
+  ArrayList<String> stopwords = loadStopwords("./data/stopwords.txt");
   @Override
   public void execute(TridentTuple tuple, TridentCollector collector) {
     //Get the tweet
@@ -64,7 +64,6 @@ public class HashtagExtractor extends BaseFunction {
 		reader.close();
 		
 	} catch(IOException e){
-		System.out.println("not found");
 		System.err.format("[Error]Failed to open file %s!!", filename);
 	}
 	return words;
