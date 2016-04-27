@@ -63,16 +63,17 @@ public void updateDate(){
 public void printTopTen() {
 	//print top 10 words (words with highest counts)
 	TreeMap<String, Integer> sorted_counts = new TreeMap<String,Integer>(bvc);
-	sorted_counts.putAll(counts);
-	int i = 0;
-	for (String s : sorted_counts.keySet()) {
-		if (i == 10) {
-			break;
-		}
-		System.out.println(s + " ");
-		i++;
-	}
-	System.out.println();
+	System.out.println(sorted_counts.toString());
+	// sorted_counts.putAll(counts);
+	// int i = 0;
+	// for (String s : sorted_counts.keySet()) {
+	// 	if (i == 10) {
+	// 		break;
+	// 	}
+	// 	System.out.println(s + " ");
+	// 	i++;
+	// }
+	// System.out.println();
 }
 }
 
