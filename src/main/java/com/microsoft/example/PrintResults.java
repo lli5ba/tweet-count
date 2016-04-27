@@ -1,4 +1,4 @@
-package com.microsoft.example;
+package storm.trident.operation.builtin;
 
 import storm.trident.operation.BaseFilter;
 import storm.trident.tuple.TridentTuple;
@@ -14,20 +14,15 @@ public class PrintResults extends BaseFilter {
 
     @Override
     public boolean isKeep(TridentTuple tuple) {
-    		if (count == 10) {
-			//go to next line and reset count
-			System.out.println();
-			count = 0;
-		}
-		
-		if (count < 10) {
-			if (count == 0) {
-				java.util.Date date= new java.util.Date();
-				System.out.print(new Timestamp(date.getTime()));
-			}
-			//append each word
-			System.out.print( " " + tuple.toString());
+		if (count == 0) {
+			java.util.Date date= new java.util.Date();
+			System.out.print(new Timestamp(date.getTime()));
+		} else if (count < 10) {
+			System.out.printl( " " + tuple.toString());
 			count++;
+		} else if (count == 10) {
+			//reset count
+			count = 10;
 		}
 		return true;
     }
