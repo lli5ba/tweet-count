@@ -42,7 +42,7 @@ public class WordCount extends BaseFunction {
       collector.emit(new Values(word, count));
 } 
 public void updateDate(){
-	date2 = new java.util.Date();
+	Date date2 = new java.util.Date();
 	double seconds = (date2.getTime()-date.getTime())/1000;
 	System.out.println(seconds);
 	if (seconds >= 5) {
