@@ -6,6 +6,11 @@ import storm.trident.operation.BaseFunction;
 import storm.trident.operation.TridentCollector;
 import storm.trident.tuple.TridentTuple;
 import backtype.storm.tuple.Values;
+import backtype.storm.tuple.Fields;
+import backtype.storm.topology.OutputFieldsDeclarer;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import twitter4j.HashtagEntity;
 import twitter4j.Status;
@@ -28,11 +33,12 @@ public class WordCount extends BaseFunction {
       //Emit the word and the current count
       collector.emit(new Values(word, count));
     
-	//Declare that we will emit a tuple containing two fields; word and count
+	
 } 
-    @Override
-    public void declareOutputFields(OutputFieldsDeclarer declarer) {
-      declarer.declare(new Fields("hashtag", "count"));
-    }
+	//Declare that we will emit a tuple containing two fields; word and count
+    //@Override
+    //public void declareOutputFields(OutputFieldsDeclarer declarer) {
+    //  declarer.declare(new Fields("hashtag", "count"));
+    //}
   
 }
