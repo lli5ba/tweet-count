@@ -53,7 +53,7 @@ public void updateDate(){
 	double seconds = (date2.getTime()-date.getTime())/1000;
 	if (seconds >= 30) {
 		this.date = date2;
-		System.out.println(counts.toString());
+		//System.out.println(counts.toString());
 		System.out.print(new Timestamp(date2.getTime()));
 		System.out.print("	");
 		printTopTen();
