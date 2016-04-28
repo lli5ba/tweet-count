@@ -33,8 +33,6 @@ public class WordCount extends BaseFunction {
     Date date = new java.util.Date();
   @Override
   public void execute(TridentTuple tuple, TridentCollector collector) {
-  	//NOTE: The following code is from the Microsoft wordcount tutorial:
-	//https://azure.microsoft.com/en-us/documentation/articles/hdinsight-storm-develop-java-topology/
     //Get the word contents from the tuple
      String word = tuple.getString(0);
 	 //Have we counted any already?
@@ -53,13 +51,14 @@ public class WordCount extends BaseFunction {
 public void updateDate(){
 	Date date2 = new java.util.Date();
 	double seconds = (date2.getTime()-date.getTime())/1000;
-	if (seconds >= 5) {
+	if (seconds >= 30) {
 		this.date = date2;
 		System.out.println(counts.toString());
 		System.out.print(new Timestamp(date2.getTime()));
-		System.out.print(": ");
+		System.out.print("	");
 		printTopTen();
-		
+		//clear hashmap
+		counts.clear();
         
 	}
 	
@@ -85,8 +84,10 @@ public static List<String> topNKeys(final HashMap<String, Integer> map, int n) {
 public void printTopTen() {
 	//print top 10 words (words with highest counts)
 	List<String> top10 = topNKeys(counts, 10);
-	System.out.println(top10.toString());
-
+	for(String s: top10) {
+		System.out.println(s + " ");
+	}
+	
 }
 }
 
