@@ -33,6 +33,8 @@ public class WordCount extends BaseFunction {
     Date date = new java.util.Date();
   @Override
   public void execute(TridentTuple tuple, TridentCollector collector) {
+  	//NOTE: The following code is from the Microsoft wordcount tutorial:
+	//https://azure.microsoft.com/en-us/documentation/articles/hdinsight-storm-develop-java-topology/
     //Get the word contents from the tuple
      String word = tuple.getString(0);
 	 //Have we counted any already?
