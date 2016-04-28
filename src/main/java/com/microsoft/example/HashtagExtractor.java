@@ -33,7 +33,14 @@ public class HashtagExtractor extends BaseFunction {
 	String[] wordsInTweet = sentence.split(" ");    
 	//to lowercase and 
 	for ( String word : wordsInTweet) {
-		word=word.replaceAll("\\s+","");
+		//remove urls, and usertags
+		word=word.replaceAll("^https?://[^/]+/([^/]+)/","");
+		word=word.replaceAll("@[^\\s]+", "");
+		//send to lowercase
+		word=word.toLowerCase();
+		//remove punctuation
+		word=word.replaceAll("[^a-zA-Z ]", "");
+	
 		if (!word.equals("")) {
 			collector.emit(new Values(word));
 		}
