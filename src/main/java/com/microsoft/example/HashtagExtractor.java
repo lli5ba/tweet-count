@@ -27,7 +27,7 @@ public class HashtagExtractor extends BaseFunction {
 	//Get the tweet
 	final Status status = (Status) tuple.get(0);
 	String sentence = status.getText();
-	System.out.println(sentence);
+	//System.out.println(sentence);
 	
 	String[] wordsInTweet = sentence.split(" ");    
 	//to lowercase and 
