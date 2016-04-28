@@ -85,7 +85,7 @@ public void printTopTen() {
 	//print top 10 words (words with highest counts)
 	List<String> top10 = topNKeys(counts, 10);
 	for(String s: top10) {
-		System.out.println(s + " ");
+		System.out.print(s + " ");
 	}
 	
 }
