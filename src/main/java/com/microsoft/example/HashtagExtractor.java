@@ -28,8 +28,7 @@ public class HashtagExtractor extends BaseFunction {
 	final Status status = (Status) tuple.get(0);
 	String sentence = status.getText();
 	System.out.println(sentence);
-	//NOTE: The following code is from the Microsoft wordcount tutorial:
-	//https://azure.microsoft.com/en-us/documentation/articles/hdinsight-storm-develop-java-topology/
+	
 	String[] wordsInTweet = sentence.split(" ");    
 	//to lowercase and 
 	for ( String word : wordsInTweet) {
@@ -40,8 +39,8 @@ public class HashtagExtractor extends BaseFunction {
 		word=word.toLowerCase();
 		//remove punctuation
 		word=word.replaceAll("[^a-zA-Z ]", "");
-	
-		if (!word.equals("")) {
+		//add word if it is not null and not hashtag
+		if (!word.equals("") && !stopwords.contains(word)) {
 			collector.emit(new Values(word));
 		}
 	}
@@ -61,6 +60,8 @@ public class HashtagExtractor extends BaseFunction {
 		
 		while ((line = reader.readLine()) != null) {
 			if (!line.isEmpty()){
+				//remove punctuation
+				line = line.replaceAll("[^a-zA-Z ]", "");
 				System.out.println(line);
 				words.add(line);
 			}
