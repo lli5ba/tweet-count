@@ -87,7 +87,7 @@ public void printTopTen() {
 	for(String s: top10) {
 		System.out.print(s + " ");
 	}
-	
+	System.out.println();
 }
 }
 
