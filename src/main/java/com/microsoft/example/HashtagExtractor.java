@@ -44,12 +44,9 @@ public class HashtagExtractor extends BaseFunction {
 			collector.emit(new Values(word));
 		}
 	}
-	
-	
-	
+
 }
 	
-}
   
   public ArrayList<String> loadStopwords(String filename) {
   	System.out.println("starting load");
